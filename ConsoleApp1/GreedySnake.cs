@@ -17,7 +17,6 @@ namespace ConsoleApp1
         public void init()
         {
             bool _change = false;
-
             for (int i = 0; i < (int)GameMgr.Bonder; i++)
             {
                 for (int j = 0; j < (int)GameMgr.Bonder; j++)
@@ -36,8 +35,24 @@ namespace ConsoleApp1
                     }
                 }
             }
+            Timer();
+            
+        }
+        void Timer()
+        {
+            System.Timers.Timer t = new System.Timers.Timer(500);//實例化Timer類，設置間隔時間為10000毫秒；
+
+            t.Elapsed += new System.Timers.ElapsedEventHandler(Draw);//到達時間的時候執行事件；
+
+            t.AutoReset = true;//設置是執行一次（false）還是一直執行(true)；
+
+            t.Enabled = true;//是否執行System.Timers.Timer.Elapsed事件；
 
 
+        }
+        void Draw(object source, System.Timers.ElapsedEventArgs e)
+        {
+            Console.Clear();
             for (int i = 0; i < (int)GameMgr.Bonder; i++) //畫圖
             {
                 for (int j = 0; j < (int)GameMgr.Bonder; j++)
@@ -46,6 +61,8 @@ namespace ConsoleApp1
                 }
                 Console.WriteLine("");
             }
+            Console.SetCursorPosition(0, 0);
+            Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
         }
 
 

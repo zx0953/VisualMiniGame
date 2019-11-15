@@ -11,8 +11,7 @@ namespace ConsoleApp1
     {
         #region  // Fields      //變數區
         int from = -1;
-        int to = -1;
-        int temp = -1;
+        int to = -1;        
         int disk = -1;
         int aux = -1;
         string[,] array;
