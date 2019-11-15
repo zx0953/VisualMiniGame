@@ -10,11 +10,13 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            
+            /*
             IGame Game = new ABhowMany();
             Game.Setup();
             Game.Play();            
-            
+            */
+            GreedySnake greedySnake = new GreedySnake();
+            greedySnake.init();
             Console.ReadKey();
         }
     }

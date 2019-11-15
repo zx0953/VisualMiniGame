@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ABhowMany.cs" />
+    <Compile Include="GreedySnake.cs" />
     <Compile Include="GuessNum.cs" />
     <Compile Include="HanoiGame.cs" />
     <Compile Include="IGame.cs" />
