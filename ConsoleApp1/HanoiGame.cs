@@ -7,15 +7,22 @@ using Microsoft.VisualBasic;
 
 namespace ConsoleApp1
 {
-    class HanoiGame
+    class HanoiGame : IGame
     {
+        #region  // Fields      //變數區
         int from = -1;
         int to = -1;
         int temp = -1;
         int disk = -1;
         int aux = -1;
         string[,] array;
-        public void Hanoi(int Disk, int Src, int Dest, int Aux)
+        #endregion
+
+        #region // Ctor        //建構方法
+        #endregion
+
+        #region // Utilities    //內部的方法 (private function)
+        private void Hanoi(int Disk, int Src, int Dest, int Aux)
         {
             if (Disk == 1)
             {
@@ -28,6 +35,54 @@ namespace ConsoleApp1
                 Console.WriteLine($"將第{Disk}個圓盤由{Src}移到{Dest} ");
                 Draw(Disk, Src, Dest);
                 Hanoi(Disk - 1, Aux, Dest, Src);
+            }
+        }
+        private void Draw(int Disk, int Src, int Dest)
+        {
+            for (int i = disk - 1; i >= 0; i--)
+            {
+                if (array[Dest - 1, i] == "｜")
+                {
+                    string s = Disk.ToString();
+                    s = Strings.StrConv(s, VbStrConv.Wide, 0);
+
+                    array[Dest - 1, i] = s;
+                    break;
+                }
+            }
+            for (int i = disk - 1; i >= 0; i--)
+            {
+                string s = Disk.ToString();
+                s = Strings.StrConv(s, VbStrConv.Wide, 0);
+                if (array[Src - 1, i] == s)
+                {
+                    array[Src - 1, i] = "｜";
+                    break;
+                }
+
+            }
+            for (int j = 0; j < disk; j++)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    Console.Write(array[i, j]);
+                }
+                Console.WriteLine("");
+            }
+            Console.WriteLine("");
+        }
+        #endregion
+
+        #region // Methods    //公開方法 (public fucntion )
+        public void Play()
+        {
+            try
+            {
+                Hanoi(disk, from, to, aux);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine(exp.ToString());
             }
         }
         public void Setup()
@@ -133,7 +188,7 @@ namespace ConsoleApp1
                             string strs = ints.ToString();
                             strs = Strings.StrConv(strs, VbStrConv.Wide, 0);
                             array[i, j] = strs;
-                            
+
                             Console.Write($"{j + 1}");
                         }
                         else
@@ -152,67 +207,15 @@ namespace ConsoleApp1
                 Console.WriteLine(exp.ToString());
             }
         }
+        #endregion
 
+        #region //  Properties   //屬性,  C# 常見
         //參考演算法: http://notepad.yehyeh.net/Content/DS/CH02/4.php
         //參考演算法: http://program-lover.blogspot.com/2008/06/tower-of-hanoi.html
-        public void Play()
-        {
-            try
-            {
-                Hanoi(disk, from, to, aux);
-            }
-            catch (Exception exp)
-            {
-                Console.WriteLine(exp.ToString());
-            }
-        }
-        public void Draw(int Disk, int Src, int Dest)
-        {
-            for (int i = disk - 1; i >= 0; i--)
-            {
-                if (array[Dest - 1, i] == "｜")
-                {
-                    string s = Disk.ToString();
-                    s = Strings.StrConv(s, VbStrConv.Wide, 0);
+        #endregion
 
-                    array[Dest - 1, i] = s;
-                    break;
-                }
-            }
-            for (int i = disk - 1; i >= 0; i--)
-            {
-                string s = Disk.ToString();
-                s = Strings.StrConv(s, VbStrConv.Wide, 0);
-                if (array[Src - 1, i] == s)
-                {
-                    array[Src - 1, i] = "｜";
-                    break;
-                }
-
-            }
-            for (int j = 0; j < disk; j++)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    Console.Write(array[i, j]);
-                }
-                Console.WriteLine("");
-            }
-            Console.WriteLine("");
-        }
     }
 
 
 }
 
-/*
-
-
-
-            
-
-
-
-
-                   
-                */

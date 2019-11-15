@@ -44,7 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ABhowMany.cs" />
+    <Compile Include="GuessNum.cs" />
     <Compile Include="HanoiGame.cs" />
+    <Compile Include="IGame.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

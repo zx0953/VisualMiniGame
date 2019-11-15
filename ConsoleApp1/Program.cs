@@ -10,12 +10,12 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            HanoiGame hanoiGame = new HanoiGame();
-            hanoiGame.Setup();
-            hanoiGame.Play();
-
+            
+            IGame Game = new ABhowMany();
+            Game.Setup();
+            Game.Play();            
+            
             Console.ReadKey();
-
         }
     }
 }
