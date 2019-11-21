@@ -34,15 +34,15 @@ namespace ConsoleApp1
                         array[i, j] = '　';
                     }
                 }
-            }
-            Timer();
+            }   //初始 設定牆壁
+            Draw();
             
         }
         void Timer()
         {
             System.Timers.Timer t = new System.Timers.Timer(500);//實例化Timer類，設置間隔時間為10000毫秒；
 
-            t.Elapsed += new System.Timers.ElapsedEventHandler(Draw);//到達時間的時候執行事件；
+            //t.Elapsed += new System.Timers.ElapsedEventHandler(Draw);//到達時間的時候執行事件；
 
             t.AutoReset = true;//設置是執行一次（false）還是一直執行(true)；
 
@@ -50,7 +50,7 @@ namespace ConsoleApp1
 
 
         }
-        void Draw(object source, System.Timers.ElapsedEventArgs e)
+        void Draw(/*object source, System.Timers.ElapsedEventArgs e*/)
         {
             Console.Clear();
             for (int i = 0; i < (int)GameMgr.Bonder; i++) //畫圖
@@ -62,7 +62,7 @@ namespace ConsoleApp1
                 Console.WriteLine("");
             }
             Console.SetCursorPosition(0, 0);
-            Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
+            Console.SetWindowSize(Console.WindowWidth, Console.LargestWindowHeight);
         }
 
 
